@@ -10,6 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
     NavbarComponent,
     NotFoundComponent,
     MyOrdersComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,10 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
       {
         path: '',
         component: HomeComponent,
+      },
+      {
+        path: 'login',
+        component: LoginComponent,
       },
       {
         path: 'cart',
