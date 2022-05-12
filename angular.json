@@ -99,6 +99,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "bread-and-rolls:build:production",
+            "firebaseProject": "bread-and-rolls",
+            "firebaseHostingSite": "bread-and-rolls"
+          }
         }
       }
     }

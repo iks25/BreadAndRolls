@@ -1,0 +1,14 @@
+<div id="popup-bg" *ngIf="isVisible">
+  <div class="text-center popupWindow">
+    <div class="popup-title">
+      {{ title }}
+      <button class="btn float-end me-3 p-0" (click)="exit()">
+        <i class="bi bi-x-lg exit"></i>
+      </button>
+    </div>
+
+    <div class="popup-content">
+      <ng-content select="[content]"></ng-content>
+    </div>
+  </div>
+</div>

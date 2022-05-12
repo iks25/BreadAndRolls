@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "bread-and-rolls"
+  },
+  "targets": {
+    "bread-and-rolls": {
+      "hosting": {
+        "bread-and-rolls": [
+          "bread-and-rolls"
+        ]
+      }
+    }
   }
 }

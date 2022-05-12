@@ -1,14 +1,18 @@
-<p>login works!</p>
-
 <div id="loginContainer" class="">
   <h4>sign in</h4>
-  <button class="btn btn-outline-danger form-control mb-2 redirect-button">
-    <i class="bi bi-google me-2"> </i>
+  <button
+    class="btn btn-outline-danger form-control mb-2 redirect-button"
+    (click)="loginByGoogle()"
+  >
+    <i class="bi bi-google"> </i>
     sing in with <span class="brandName">GOOGLE</span>
   </button>
 
-  <button class="btn btn-outline-primary form-control mb-2 redirect-button">
-    <i class="bi bi-facebook me-2"></i>
+  <button
+    class="btn btn-outline-primary form-control mb-2 redirect-button"
+    (click)="loginByFacebook()"
+  >
+    <i class="bi bi-facebook"></i>
     sing in with <span class="brandName">FACEBOOK</span>
   </button>
 
@@ -31,3 +35,10 @@
     <button class="btn btn-outline-warning form-control mb-2">register</button>
   </form>
 </div>
+
+<app-popup-window
+  [isVisible]="isErrorWindowActive"
+  (close)="closePopupWindow()"
+>
+  <div content>Unexpected error, sorry</div>
+</app-popup-window>

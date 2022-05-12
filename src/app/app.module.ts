@@ -12,6 +12,13 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { LoginComponent } from './login/login.component';
 
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
+import { PopupWindowComponent } from './popup-window/popup-window.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +26,7 @@ import { LoginComponent } from './login/login.component';
     NotFoundComponent,
     MyOrdersComponent,
     LoginComponent,
+    PopupWindowComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,10 @@ import { LoginComponent } from './login/login.component';
         component: NotFoundComponent,
       },
     ]),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideDatabase(() => getDatabase()),
+    provideFirestore(() => getFirestore()),
   ],
   providers: [],
   bootstrap: [AppComponent],
