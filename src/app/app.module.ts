@@ -1,3 +1,7 @@
+import { FirebaseRepositoryService } from './firebase-repository.service';
+import { UserService } from './user.service';
+import { AuthenticationService } from './authentication.service';
+import { AuthGuardService } from './auth-guard.service';
 import { CartComponent } from './cart/cart.component';
 import { HomeComponent } from './home/home.component';
 import { RouterModule } from '@angular/router';
@@ -20,6 +24,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { PopupWindowComponent } from './popup-window/popup-window.component';
 import { LoginUserComponent } from './navbar/login-user/login-user.component';
 import { RegisterComponent } from './register/register.component';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -31,27 +37,22 @@ import { RegisterComponent } from './register/register.component';
     PopupWindowComponent,
     LoginUserComponent,
     RegisterComponent,
+    CheckOutComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     RouterModule.forRoot([
+      { path: '', component: HomeComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'cart', component: CartComponent },
       {
-        path: '',
-        component: HomeComponent,
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-      },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-      {
-        path: 'cart',
-        component: CartComponent,
+        path: 'check-out',
+        component: CheckOutComponent,
+        canActivate: [AuthGuardService],
       },
       {
         path: 'myOrders',
@@ -68,7 +69,12 @@ import { RegisterComponent } from './register/register.component';
     provideDatabase(() => getDatabase()),
     provideFirestore(() => getFirestore()),
   ],
-  providers: [],
+  providers: [
+    AuthenticationService,
+    AuthGuardService,
+    UserService,
+    FirebaseRepositoryService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

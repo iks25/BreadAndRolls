@@ -30,14 +30,15 @@ export class LoginComponent implements OnInit {
     const auth = getAuth();
 
     this.auth.logInGoogle().then((result) => {
-      console.log(result);
-
       this.loginSuccess();
     });
   }
 
   loginByFacebook() {
-    this.isErrorWindowActive = true;
+    this.auth.loginWithFacebook().then((result) => {
+      this.loginSuccess();
+    });
+    //TODO add Facebook Log in
   }
   loginSuccess() {
     this.router.navigate(['/']);

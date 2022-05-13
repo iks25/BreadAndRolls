@@ -28,8 +28,6 @@ export class LoginUserComponent implements OnInit {
   }
 
   logOut() {
-    console.log('logout');
-
     this.auth.logOut().then((result) => {
       this.router.navigate(['/']);
     });
