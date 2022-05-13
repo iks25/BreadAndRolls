@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
     this.isErrorWindowActive = false;
   }
   loginByGoogle() {
-    console.log('zzzzzzzz');
-
     const auth = getAuth();
-    this.auth.logInGoogle(this.loginSuccess, this.loginError);
 
-    this.loginSuccess();
+    this.auth.logInGoogle().then((result) => {
+      console.log(result);
+
+      this.loginSuccess();
+    });
   }
 
   loginByFacebook() {

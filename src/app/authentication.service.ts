@@ -5,32 +5,37 @@ import {
   signInWithPopup,
   getAuth,
   authState,
+  signOut,
 } from '@angular/fire/auth';
 import {
   signInWithEmailAndPassword,
   signInWithRedirect,
   User,
 } from '@firebase/auth';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticationService {
-  user?: User;
+  user?: User | null;
   constructor(private auth: Auth) {}
 
-  logInGoogle(goodResult: Function, errorResult: Function) {
+  logInGoogle() {
     const provider = new GoogleAuthProvider();
 
-    signInWithPopup(this.auth, provider)
+    return signInWithPopup(this.auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         // The signed-in user info.
         const user = result.user;
-        goodResult();
+
+        this.user = result.user;
+
         // ...
+        return user;
       })
       .catch((error) => {
         // Handle Errors here.
@@ -40,8 +45,18 @@ export class AuthenticationService {
         const email = error.email;
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
-        errorResult(error);
         // ...
+      });
+  }
+
+  logOut() {
+    return signOut(this.auth)
+      .then(() => {
+        this.user = null;
+        console.log('from service');
+      })
+      .catch((error) => {
+        // An error happened.
       });
   }
 }

@@ -1,22 +1,11 @@
-<ul class="nav">
-  <li class="nav-item">
-    <a class="nav-link active" href="#" routerLink="">Bread & Rolls </a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" routerLink="cart">Shopping Cart</a>
-  </li>
-
-  <div ngbDropdown class="d-inline-block">
-    <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
-      <i class="bi bi-person-fill"></i>
-      UserName
-    </button>
-
-    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-      <button ngbDropdownItem routerLink="myOrders">My Orders</button>
-      <button ngbDropdownItem>Menage Orders</button>
-      <button ngbDropdownItem>Manage Products</button>
-      <button ngbDropdownItem>Log Out</button>
-    </div>
-  </div>
-</ul>
+<nav class="shadow-sm">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link active" href="#" routerLink="">Bread & Rolls </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="cart">Shopping Cart</a>
+    </li>
+    <app-login-user></app-login-user>
+  </ul>
+</nav>

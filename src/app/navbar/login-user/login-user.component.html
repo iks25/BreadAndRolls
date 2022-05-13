@@ -1,0 +1,21 @@
+<div ngbDropdown class="d-inline-block" *ngIf="auth.user">
+  <button type="button" class="btn" id="dropdownBasic1" ngbDropdownToggle>
+    <!-- <i class="bi bi-person-fill"></i> -->
+    <img [src]="auth.user.photoURL" id="userImg" />
+    {{ auth.user.displayName }}
+  </button>
+
+  <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <button ngbDropdownItem routerLink="myOrders">My Orders</button>
+    <button ngbDropdownItem>Menage Orders</button>
+    <button ngbDropdownItem>Manage Products</button>
+    <button ngbDropdownItem (click)="logOut()">Log Out</button>
+  </div>
+</div>
+
+<div class="d-inline-block float-end" *ngIf="!auth.user">
+  <a routerLink="login" class="mt-1 btn btn-sm btn-outline-primary">login</a>
+  <a routerLink="register" class="mt-1 btn btn-sm btn-outline-primary ms-1"
+    >register</a
+  >
+</div>

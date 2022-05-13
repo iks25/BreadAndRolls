@@ -18,6 +18,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { PopupWindowComponent } from './popup-window/popup-window.component';
+import { LoginUserComponent } from './navbar/login-user/login-user.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
     MyOrdersComponent,
     LoginComponent,
     PopupWindowComponent,
+    LoginUserComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +44,10 @@ import { PopupWindowComponent } from './popup-window/popup-window.component';
       {
         path: 'login',
         component: LoginComponent,
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
       },
       {
         path: 'cart',
